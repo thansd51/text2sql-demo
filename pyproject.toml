@@ -1,11 +1,8 @@
 [project]
 name = "text2sql"
 version = "0.1.0"
-description = "Add your description here"
+description = "자연어 질문을 데이터소스의 DB 문법에 맞는 SELECT 문으로 생성하는 Text-to-SQL 서버"
 readme = "README.md"
-authors = [
-    { name = "한희건", email = "thansd51@naver.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
     "anthropic>=2.8.0",
