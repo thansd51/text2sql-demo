@@ -1,0 +1,17 @@
+[project]
+name = "text2sql"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "한희건", email = "thansd51@naver.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+text2sql = "text2sql:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
