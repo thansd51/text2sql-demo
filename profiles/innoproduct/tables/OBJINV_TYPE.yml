@@ -1,0 +1,22 @@
+name: OBJINV_TYPE
+description: 관계 종류를 정의한다. 예제 쿼리에 나온 컬럼만 정의했다
+group: 상품
+name_column: TYPE_NAME
+key_columns: [INV_TYPE, TYPE_GBN, END_DT]
+rules:
+  - 현재 쓰는 관계 종류는 END_DT = '99991231'이다. 규칙 종류의 이름은 TYPE_NAME이다
+columns:
+  - name: INV_TYPE
+    type: number
+    description: 관계 구분 ID
+  - name: TYPE_GBN
+    type: number
+    description: 관계 종류 구분 (1 = 기본 상품구조, 6 = 서비스뷰, 4 = 관계규칙)
+    synonyms: [구조구분, 관계종류]
+  - name: TYPE_NAME
+    type: string
+    description: 관계 종류의 이름
+    synonyms: [관계명, 규칙종류, 구조명]
+  - name: END_DT
+    type: string
+    description: 종료일자 (YYYYMMDD). 현재 쓰는 관계 종류는 99991231이다

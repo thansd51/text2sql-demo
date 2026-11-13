@@ -1,0 +1,37 @@
+product: innoproduct
+
+# 제품 공통 질문-SQL 예시. 이 제품을 쓰는 모든 프로젝트가 함께 쓴다.
+# 코드(TYPEID = 101 등)는 써도 되지만 코드의 이름(장기상품 등)은 프로젝트마다 다르므로 쓰지 않는다.
+# 기본 문법으로 쓰고 행 제한과 날짜 함수는 쓰지 않는다 (시작할 때 모든 프로젝트의 DB에서 검사한다).
+examples:
+  - question: 유형코드가 101인 오브젝트의 코드, 이름, 시작일, 종료일
+    sql: SELECT BIZCODE, OBJ_NAME, VF_DT, VT_DT FROM OBJ_MAIN WHERE TYPEID = 101
+
+  - question: 항목코드가 '#S00000031'인 허용값의 코드와 이름
+    sql: SELECT BIZCODE, OBJ_NAME FROM OBJ_MAIN WHERE R10_1 = '#S00000031'
+
+  - question: 이름에 '보험'이 들어간 오브젝트의 코드와 이름
+    sql: SELECT BIZCODE, OBJ_NAME FROM OBJ_MAIN WHERE TYPEID <> 0 AND OBJ_NAME LIKE '%보험%'
+
+  - question: 유형별 오브젝트 수
+    sql: SELECT TYPEID, COUNT(*) FROM OBJ_MAIN WHERE TYPEID <> 0 GROUP BY TYPEID
+
+  - question: 기준일자 20240101에 유효한 오브젝트 수
+    sql: SELECT COUNT(*) FROM OBJ_MAIN WHERE TYPEID <> 0 AND VF_DT <= '20240101' AND VT_DT >= '20240101'
+
+  - question: 코드가 A0001이고 유형코드가 101인 상품의 하위 오브젝트 코드와 이름 (상품 구조)
+    sql: >-
+      SELECT T3.BIZCODE, T3.OBJ_NAME
+      FROM OBJ_MAIN T1, OBJ_INV T2, OBJ_MAIN T3, OBJINV_TYPE T4
+      WHERE T1.BIZCODE = 'A0001' AND T1.TYPEID = 101
+      AND T1.SID = T2.SID AND T2.SUBSID = T3.SID
+      AND T4.TYPE_GBN = 1 AND T4.INV_TYPE = T2.INV_TYPE AND T4.END_DT = '99991231'
+
+  - question: 코드가 A0001이고 유형코드가 101인 상품의 관계규칙을 규칙 종류와 세트 순서대로
+    sql: >-
+      SELECT T1.BIZCODE, T1.OBJ_NAME, T4.TYPE_NAME, T2.SET_SEQ, T3.BIZCODE, T3.OBJ_NAME
+      FROM OBJ_MAIN T1, OBJ_INV T2, OBJ_MAIN T3, OBJINV_TYPE T4
+      WHERE T1.BIZCODE = 'A0001' AND T1.TYPEID = 101
+      AND T1.SID = T2.SID AND T2.SUBSID = T3.SID
+      AND T4.TYPE_GBN = 4 AND T4.INV_TYPE = T2.INV_TYPE AND T4.END_DT = '99991231'
+      ORDER BY T4.TYPE_NAME, T2.SET_SEQ

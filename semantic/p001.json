@@ -1,0 +1,12 @@
+{
+  "OBJ_MAIN": [
+    { "SID": "1001", "BIZCODE": "TYPE101", "TYPEID": "101", "R10_1": "", "OBJ_NAME": "장기상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "1002", "BIZCODE": "TYPE102", "TYPEID": "102", "R10_1": "", "OBJ_NAME": "일반상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "2001", "BIZCODE": "ITEM0031", "TYPEID": "0", "R10_1": "#S00000031", "OBJ_NAME": "보장기간", "VF_DT": "20200101", "VT_DT": "99991231" }
+  ],
+  "OBJINV_TYPE": [
+    { "INV_TYPE": "11", "TYPE_GBN": "1", "TYPE_NAME": "기본 상품구조", "END_DT": "99991231" },
+    { "INV_TYPE": "21", "TYPE_GBN": "6", "TYPE_NAME": "서비스뷰 구성", "END_DT": "99991231" },
+    { "INV_TYPE": "41", "TYPE_GBN": "4", "TYPE_NAME": "필수 관계규칙", "END_DT": "99991231" }
+  ]
+}

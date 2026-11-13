@@ -13,6 +13,8 @@
 - 린트: uv run ruff check . && uv run ruff format .
 - 패키지 추가: uv add <pkg> (pip install 금지)
 - 프런트: cd frontend && npm run dev
+- 프런트 빌드: cd frontend && npm run build
+- 운영 실행: uv run uvicorn text2sql.main:app --host 0.0.0.0 --port $PORT
 
 ## 구조 (src/text2sql)
 - api, pipeline, semantic, validation, dialects, llm. 폴더 하나가 개념 하나
@@ -21,6 +23,12 @@
 - 프로젝트별 데이터는 저장소 인터페이스를 통해서만 접근한다 (파이프라인에서 파일 직접 읽기 금지)
 - 요청 값(datasource_id 등)으로 파일 경로를 만들지 않는다. 시작 시 읽은 레지스트리에서만 조회한다
 - 프런트는 docs/design.md의 API 계약으로만 백엔드와 통신한다
+- 엔드포인트는 APIRouter로 만들고 main.py는 포함만 한다. 자체 인증은 만들지 않는다
+- 환경변수 접두사는 TEXT2SQL_. 경로는 설정에서 주입받고 현재 실행 위치에 의존하지 않는다
+- 엔드포인트는 APIRouter로 만들고 main.py는 포함만 한다. main.py가 frontend/dist가 있으면 정적 파일로 제공한다
+- 환경변수 접두사는 TEXT2SQL_. 경로는 설정에서 주입받고 실행 위치에 의존하지 않는다
+- 서버는 파일을 쓰지 않는다 (배포 환경의 파일시스템이 초기화됨)
+- 접속 키 인증 외의 자체 로그인은 만들지 않는다
 
 ## 규칙
 - 구현 전에 docs/design.md를 먼저 읽고 읽은 문서를 알려줄 것. 설계와 다르면 구현하지 말고 물어볼 것

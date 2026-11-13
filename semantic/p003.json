@@ -1,0 +1,12 @@
+{
+  "OBJ_MAIN": [
+    { "SID": "3001", "BIZCODE": "TYPE101", "TYPEID": "101", "R10_1": "", "OBJ_NAME": "연금상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "3002", "BIZCODE": "TYPE102", "TYPEID": "102", "R10_1": "", "OBJ_NAME": "저축상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "3003", "BIZCODE": "TYPE121", "TYPEID": "121", "R10_1": "", "OBJ_NAME": "부가서비스", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "4001", "BIZCODE": "ITEM0031", "TYPEID": "0", "R10_1": "#S00000031", "OBJ_NAME": "연금개시연령", "VF_DT": "20200101", "VT_DT": "99991231" }
+  ],
+  "OBJINV_TYPE": [
+    { "INV_TYPE": "11", "TYPE_GBN": "1", "TYPE_NAME": "연금 기본구조", "END_DT": "99991231" },
+    { "INV_TYPE": "21", "TYPE_GBN": "6", "TYPE_NAME": "연금 서비스뷰", "END_DT": "99991231" }
+  ]
+}

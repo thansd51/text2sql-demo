@@ -1,0 +1,37 @@
+name: OBJ_MAIN
+description: 상품 객체(상품구성요소)와 항목의 참조값(허용값)을 저장한다. TYPEID로 구분한다
+group: 상품
+name_column: OBJ_NAME
+key_columns: [TYPEID, R10_1]
+rules:
+  - 오브젝트명(OBJ_NAME)은 중복될 수 있다. 이름으로 조회할 때는 BIZCODE를 함께 조회하고, 개수는 COUNT(*)로 센다 (이름 기준 DISTINCT 금지)
+  - 상품 객체와 항목의 허용값을 함께 저장한다. 상품 객체를 조회할 때는 TYPEID <> 0 조건으로 허용값을 제외하고, 항목의 허용값 목록은 R10_1(항목코드)로 조회한다
+columns:
+  - name: SID
+    type: number
+    description: 객체를 구분하는 내부 Key (PK, 중복 없음)
+    synonyms: [내부ID, 오브젝트ID]
+  - name: BIZCODE
+    type: string
+    description: 사용자가 지정하는 객체의 업무적 구분 Key. 오브젝트(서비스뷰)와 허용값의 코드이며 채번규칙에 따라 정해진다 (중복 없음, 오브젝트 식별에 사용)
+    synonyms: [상품코드, 오브젝트 코드, 코드]
+  - name: TYPEID
+    type: number
+    description: 상품모델링 시 지정하는 오브젝트 유형(세부유형) 코드. 0이면 항목의 허용값이다. 코드 값의 이름은 프로젝트마다 다를 수 있다
+    synonyms: [유형코드, 세부유형, 유형]
+  - name: R10_1
+    type: string
+    description: 항목코드 (예 #S00000001). 항목의 허용값을 조회할 때만 사용한다. 상품 객체를 조회할 때는 쓰지 않는다
+    synonyms: [항목코드, 속성코드]
+  - name: OBJ_NAME
+    type: string
+    description: 객체 명. 명칭으로 조회할 때 사용한다 (같은 유형 안에서도 중복될 수 있음, 식별자로 쓰지 말 것)
+    synonyms: [상품명, 오브젝트명, 이름, 명칭]
+  - name: VF_DT
+    type: string
+    description: 시작일자 (YYYYMMDD). 기준일자와 비교할 때 사용한다
+    synonyms: [시작일]
+  - name: VT_DT
+    type: string
+    description: 종료일자 (YYYYMMDD, 99991231은 종료일 없음). 기준일자와 비교할 때 사용한다
+    synonyms: [종료일]

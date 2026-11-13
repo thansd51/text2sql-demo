@@ -1,0 +1,30 @@
+# 앱(화면 + API)과 로컬 모델을 Docker로 한 번에 띄운다.  사용법: ./scripts/docker-up.sh
+#
+# - 모델 서버(llm)는 밖으로 포트를 열지 않는다. 같은 compose 안의 앱만 http://llm:8080으로 접근한다.
+# - 앱은 이 PC(127.0.0.1)에만 연다. 접속 키(TEXT2SQL_ACCESS_KEY)가 반드시 필요하다.
+# - 모델 파일은 ./models에 두고 읽기 전용으로 마운트한다 (./scripts/download-model.sh로 받는다).
+services:
+  llm:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    volumes:
+      - ${MODEL_DIR:-./models}:/models:ro
+    command: >
+      -m /models/${MODEL_FILE:-Qwen3-4B-Instruct-2507-Q4_K_M.gguf}
+      --host 0.0.0.0 --port 8080
+      -t ${LLM_THREADS:-4} -tb ${LLM_THREADS:-4}
+      -c ${LLM_CTX:-16384} -b 512 -ub 512 -fa on --parallel 1 --no-ui
+
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:${APP_PORT:-8085}:8085"
+    environment:
+      PORT: "8085"
+      TEXT2SQL_LLM_PROVIDER: openai
+      TEXT2SQL_LLM_BASE_URL: http://llm:8080/v1
+      TEXT2SQL_LLM_MODEL: default
+      TEXT2SQL_LLM_CONTEXT_TOKENS: ${LLM_CTX:-16384}
+      TEXT2SQL_LLM_MAX_TOKENS: "512"
+      TEXT2SQL_ACCESS_KEY: ${TEXT2SQL_ACCESS_KEY:?접속 키가 없습니다. ./scripts/docker-up.sh로 실행하거나 TEXT2SQL_ACCESS_KEY를 설정하세요}
+    depends_on:
+      - llm

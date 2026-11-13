@@ -1,0 +1,6 @@
+{
+  "id": "p001",
+  "name": "샘플 프로젝트 1",
+  "db_type": "oracle",
+  "db_version": "19c"
+}

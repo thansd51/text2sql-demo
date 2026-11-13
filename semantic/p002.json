@@ -1,0 +1,12 @@
+{
+  "OBJ_MAIN": [
+    { "SID": "2001", "BIZCODE": "TYPE101", "TYPEID": "101", "R10_1": "", "OBJ_NAME": "정기보험", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "2002", "BIZCODE": "TYPE102", "TYPEID": "102", "R10_1": "", "OBJ_NAME": "종신보험", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "2003", "BIZCODE": "TYPE111", "TYPEID": "111", "R10_1": "", "OBJ_NAME": "특약", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "3001", "BIZCODE": "ITEM0031", "TYPEID": "0", "R10_1": "#S00000031", "OBJ_NAME": "보장기간", "VF_DT": "20200101", "VT_DT": "99991231" }
+  ],
+  "OBJINV_TYPE": [
+    { "INV_TYPE": "11", "TYPE_GBN": "1", "TYPE_NAME": "상품 기본구조", "END_DT": "99991231" },
+    { "INV_TYPE": "41", "TYPE_GBN": "4", "TYPE_NAME": "보험 관계규칙", "END_DT": "99991231" }
+  ]
+}

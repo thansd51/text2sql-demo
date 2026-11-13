@@ -1,0 +1,13 @@
+{
+  "OBJ_MAIN": [
+    { "SID": "5001", "BIZCODE": "TYPE101", "TYPEID": "101", "R10_1": "", "OBJ_NAME": "단체상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "5002", "BIZCODE": "TYPE102", "TYPEID": "102", "R10_1": "", "OBJ_NAME": "개인상품", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "6001", "BIZCODE": "ITEM0001", "TYPEID": "0", "R10_1": "#S00000001", "OBJ_NAME": "납입주기", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "6002", "BIZCODE": "ITEM0002", "TYPEID": "0", "R10_1": "#S00000002", "OBJ_NAME": "가입연령", "VF_DT": "20200101", "VT_DT": "99991231" },
+    { "SID": "6003", "BIZCODE": "ITEM0031", "TYPEID": "0", "R10_1": "#S00000031", "OBJ_NAME": "보장기간", "VF_DT": "20200101", "VT_DT": "99991231" }
+  ],
+  "OBJINV_TYPE": [
+    { "INV_TYPE": "11", "TYPE_GBN": "1", "TYPE_NAME": "기본 상품구조", "END_DT": "99991231" },
+    { "INV_TYPE": "41", "TYPE_GBN": "4", "TYPE_NAME": "필수 관계규칙", "END_DT": "99991231" }
+  ]
+}

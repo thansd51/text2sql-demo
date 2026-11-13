@@ -7,7 +7,15 @@ authors = [
     { name = "한희건", email = "thansd51@naver.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "anthropic>=2.8.0",
+    "fastapi>=0.162.5",
+    "httpx2>=2.16.0",
+    "pydantic-settings>=2.16.2",
+    "pyyaml>=6.0.3",
+    "sqlglot==30.30.0",
+    "uvicorn[standard]>=0.54.0",
+]
 
 [project.scripts]
 text2sql = "text2sql:main"
@@ -15,3 +23,12 @@ text2sql = "text2sql:main"
 [build-system]
 requires = ["uv_build>=0.13.7,<0.14.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.5",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

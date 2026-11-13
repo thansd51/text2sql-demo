@@ -1,0 +1,6 @@
+{
+  "id": "p002",
+  "name": "더미 프로젝트 2 (정기·종신 보험)",
+  "db_type": "postgresql",
+  "db_version": "14"
+}

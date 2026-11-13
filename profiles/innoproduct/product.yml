@@ -1,0 +1,23 @@
+product: innoproduct
+
+# 테이블은 tables/<테이블>.yml에 하나씩 둔다. 테이블을 추가하려면 파일을 더하고,
+# 조인 키는 아래 relationships에 적는다. 특정 테이블에만 해당하는 규칙은 그 테이블 파일의 rules에 적는다.
+
+# 조인 키 (모델이 조인할 때 쓴다). from, to는 테이블.컬럼이다
+relationships:
+  - from: OBJ_INV.SID
+    to: OBJ_MAIN.SID
+    note: 상위 오브젝트
+  - from: OBJ_INV.SUBSID
+    to: OBJ_MAIN.SID
+    note: 하위 오브젝트
+  - from: OBJ_INV.PROP_SID
+    to: OBJ_MAIN.SID
+    note: 관계 오브젝트
+  - from: OBJ_INV.INV_TYPE
+    to: OBJINV_TYPE.INV_TYPE
+    note: 관계 종류
+
+# 여러 테이블에 걸치는 제품 공통 사용 규칙
+glossary:
+  - 시작일(VF_DT)과 종료일(VT_DT)은 YYYYMMDD 문자열이다. 기준일자에 유효한 행은 VF_DT <= 기준일자 AND VT_DT >= 기준일자이다. 질문에 '현재', '지금', '유효한'이 있으면 기준일자는 오늘이다

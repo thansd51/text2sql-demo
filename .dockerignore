@@ -1,0 +1,21 @@
+# 이미지에 필요 없는 것 (비밀 값과 개발 도구는 넣지 않는다)
+.git
+.github
+.env
+.env.*
+!.env.example
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+_legacy
+tests
+docs
+CLAUDE.md
+.claude
+frontend/node_modules
+frontend/dist
+models
+scripts
+docker-compose.yml
